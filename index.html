@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A privacy-first, browser-based file converter." />
+    <title>OmniConvert — Local file conversion</title>
+    <script type="module" crossorigin src="./omni-convert.js"></script>
+    <link rel="stylesheet" crossorigin href="./omni-convert.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="OmniConvert home"><span class="brand-mark">◈</span> OMNI<span>CONVERT</span></a>
+        <button id="sound-toggle" class="sound-toggle" type="button" aria-pressed="true" aria-label="Turn click sounds off"><span aria-hidden="true">♪</span><span id="sound-label">SOUND ON</span></button>
+      </header>
+
+      <section class="hero" aria-labelledby="main-title">
+        <h1 id="main-title">Drop. <em>Convert.</em> Done.</h1>
+        <p class="intro">Your file stays on this device.</p>
+      </section>
+
+      <section class="converter" aria-label="File converter">
+        <div id="drop-zone" class="drop-zone" tabindex="0" role="button" aria-label="Choose a file or drag one here">
+          <input id="file-input" type="file" hidden />
+          <div class="scan-lines"></div>
+          <div class="upload-orb" aria-hidden="true"><span>↑</span></div>
+          <p class="drop-title">DROP YOUR FILE HERE</p>
+          <p class="drop-copy"><button id="browse-button" class="text-button" type="button">or choose a file</button></p>
+        </div>
+
+        <section id="analysis" class="analysis hidden" aria-live="polite">
+          <div class="file-summary">
+            <div class="file-icon" id="file-icon">FILE</div>
+            <div><p class="label">DETECTED INPUT</p><h2 id="file-name">—</h2><p id="file-meta" class="muted">—</p></div>
+            <button id="reset-button" class="secondary-button" type="button">New file</button>
+          </div>
+          <div class="processing" id="processing">
+            <div class="radar"><i></i><b></b></div>
+            <div><p class="label">ANALYSING SIGNATURE</p><p id="processing-text">Reading file headers…</p></div>
+          </div>
+          <div id="result-panel" class="hidden">
+            <div class="status-line"><span class="status-dot"></span><span id="detected-type">Format verified</span><span id="confidence" class="muted"></span></div>
+            <h2>Choose a format</h2>
+            <div id="format-list" class="format-list" role="list"></div>
+            <details id="more-formats" class="more-formats hidden">
+              <summary>Other formats <span>not available yet</span></summary>
+              <p>These formats need additional conversion tools.</p>
+              <div id="unavailable-list" class="format-list" role="list"></div>
+            </details>
+            <div id="warning" class="warning hidden"></div>
+          </div>
+        </section>
+      </section>
+
+    </main>
+  </body>
+</html>
